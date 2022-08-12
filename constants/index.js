@@ -27,3 +27,26 @@ export const MENU_ITEMS = [
     { title: "Profile", icon: UserIcon, active: false },
     { title: "More", icon: DotsCircleHorizontalIcon, active: false },
 ];
+
+export const DUMMY_POSTS = [
+    {
+        id: 1,
+        name: "Erfan Paya",
+        username: "erfanpaya",
+        userImage: ProfileIcon,
+        postImage:
+            "https://images.unsplash.com/photo-1660213372424-deecb106a28e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=912&q=80",
+        text: "Beatiful flowers",
+        timestamp: "2 hours ago",
+    },
+    {
+        id: 2,
+        name: "Erfan Paya",
+        username: "erfanpaya",
+        userImage: ProfileIcon,
+        postImage:
+            "https://images.unsplash.com/photo-1657299156185-6f5de6da0996?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80",
+        text: "Nice lunch",
+        timestamp: "4 hours ago",
+    },
+];

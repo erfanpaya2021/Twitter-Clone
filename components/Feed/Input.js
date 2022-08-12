@@ -23,7 +23,7 @@ const Input = () => {
                         placeholder="What's happening?"
                     ></textarea>
                 </div>
-                <div className="flex items-center justify-between py-2">
+                <div className="flex items-center justify-between pt-2">
                     <div className="flex space-x-0">
                         <PhotographIcon className="w-10 h-10 p-2 hover-effect hover:text-sky-500 hover:bg-sky-100 " />
                         <EmojiHappyIcon className="w-10 h-10 p-2 hover-effect hover:text-sky-500 hover:bg-sky-100 " />
