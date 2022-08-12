@@ -13,7 +13,7 @@ export default function Home({ news, users }) {
                 <link rel="icon" href="/favicon.png" />
             </Head>
 
-            <main className="flex min-h-screen mx-auto">
+            <main className="flex min-h-screen max-w-7xl mx-auto">
                 {/* Sidebar */}
                 <Sidebar />
 
@@ -21,7 +21,7 @@ export default function Home({ news, users }) {
                 <Feed />
 
                 {/* Widgets */}
-                <Widgets news={news?.articles} users={users} />
+                <Widgets news={news?.articles} users={users.results} />
 
                 {/* Modal */}
             </main>
@@ -29,7 +29,7 @@ export default function Home({ news, users }) {
     );
 }
 
-export const getStaticProps = async (ctx) => {
+export const getServerSideProps = async (ctx) => {
     const newsResponse = await fetch(
         "https://saurav.tech/NewsAPI/top-headlines/category/business/us.json",
     );
@@ -45,6 +45,5 @@ export const getStaticProps = async (ctx) => {
             news,
             users,
         },
-        revalidate: 300,
     };
 };
