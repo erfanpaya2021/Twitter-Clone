@@ -18,7 +18,7 @@ const Input = () => {
             <div className="w-full divide-y divide-gray-200">
                 <div>
                     <textarea
-                        className="w-full border-none tracking-wide min-h-[56px]  text-gray-700 focus:ring-0 placeholder:text-gray-700 "
+                        className="w-full border-none tracking-wide min-h-[56px] text-gray-700 focus:ring-0 placeholder:text-gray-500 "
                         rows="2"
                         placeholder="What's happening?"
                     ></textarea>
