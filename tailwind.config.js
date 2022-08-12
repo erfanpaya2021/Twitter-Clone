@@ -28,5 +28,5 @@ module.exports = {
             "3xl": "var(--font-size-xxxl)",
         },
     },
-    plugins: [],
+    plugins: [require("@tailwindcss/forms")],
 };
