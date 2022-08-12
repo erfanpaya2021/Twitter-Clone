@@ -2,8 +2,8 @@ import { SearchIcon } from "@heroicons/react/outline";
 
 const SearchBar = () => {
     return (
-        <div className="sticky top-0 w-[90%] xl:[75%] bg-white py-2 z-50 ml-8 space-y-5">
-            <div className="relative flex items-center  p-4 rounded-full">
+        <div className="sticky top-0 w-[90%] xl:[75%] pb-6 bg-white z-50 space-y-5">
+            <div className="relative flex items-center  p-3 rounded-full">
                 <SearchIcon className="h-6 z-50 text-gray-500" />
                 <input
                     type="text"

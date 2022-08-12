@@ -4,7 +4,7 @@ import Sidebar from "@/components/Sidebar";
 import Feed from "@/components/Feed";
 import Widgets from "@/components/Widgets";
 
-export default function Home() {
+export default function Home({ news, users }) {
     return (
         <>
             <Head>
@@ -13,7 +13,7 @@ export default function Home() {
                 <link rel="icon" href="/favicon.png" />
             </Head>
 
-            <main className="flex min-h-screen max-w-7xl mx-auto">
+            <main className="flex min-h-screen mx-auto">
                 {/* Sidebar */}
                 <Sidebar />
 
@@ -21,10 +21,30 @@ export default function Home() {
                 <Feed />
 
                 {/* Widgets */}
-                <Widgets />
+                <Widgets news={news?.articles} users={users} />
 
                 {/* Modal */}
             </main>
         </>
     );
 }
+
+export const getStaticProps = async (ctx) => {
+    const newsResponse = await fetch(
+        "https://saurav.tech/NewsAPI/top-headlines/category/business/us.json",
+    );
+    const news = await newsResponse.json();
+
+    const usersResponse = await fetch(
+        "https://randomuser.me/api/?results=30&inc=name,login,picture",
+    );
+    const users = await usersResponse.json();
+
+    return {
+        props: {
+            news,
+            users,
+        },
+        revalidate: 300,
+    };
+};

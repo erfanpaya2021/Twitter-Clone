@@ -7,7 +7,7 @@ import { IMAGES, MENU_ITEMS } from "@/constants/index";
 
 const Sidebar = () => {
     return (
-        <aside className="hidden sm:flex flex-col p-2 xl:items-start h-full fixed">
+        <aside className="hidden sm:flex flex-col p-2 xl:items-start h-full fixed xl:ml-24">
             {/* Twitter Logo */}
             <div className="hover-effect w-12 h-12 p-1 hover:bg-blue-100">
                 <Image src={IMAGES.TwitterLogo} alt="Twitter Logo" className="w-12 h-12" />

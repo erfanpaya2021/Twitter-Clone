@@ -9,7 +9,9 @@ import {
     TrashIcon,
 } from "@heroicons/react/outline";
 
-const Post = ({ id, name, username, userImage, postImage, text, timestamp }) => {
+const Post = ({ post }) => {
+    const { id, name, username, userImage, postImage, text, timestamp } = post;
+
     return (
         <article className="flex space-x-3 p-4 border-b border-gray-200">
             {/* Left side | Image */}

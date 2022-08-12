@@ -16,7 +16,7 @@ const Feed = () => {
             {/* Posts */}
             <ul>
                 {DUMMY_POSTS.map((post) => (
-                    <Post key={post.id} {...post} />
+                    <Post key={post.id} post={post} />
                 ))}
             </ul>
         </section>
