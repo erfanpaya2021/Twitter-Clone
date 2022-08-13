@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
-import { getProviders } from "next-auth/react";
+import { getProviders, signIn } from "next-auth/react";
 
 import Seo from "@/components/Head";
 
@@ -30,6 +30,7 @@ const SignIn = () => {
                             <button
                                 key={provider.id}
                                 className="bg-red-400 rounded-lg p-3 text-white hover:bg-red-500"
+                                onClick={() => signIn(provider.id, { callbackUrl: "/" })}
                             >
                                 Sign in with {provider.name}
                             </button>
