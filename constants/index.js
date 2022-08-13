@@ -1,4 +1,5 @@
 import TwitterLogo from "@/public/twitter-logo.png";
+import TwitterBg from "@/public/twitter-bg.png";
 import ProfileIcon from "@/public/me.jpg";
 
 import { HomeIcon } from "@heroicons/react/solid";
@@ -14,6 +15,7 @@ import {
 
 export const IMAGES = {
     TwitterLogo,
+    TwitterBg,
     ProfileIcon,
 };
 
