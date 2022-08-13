@@ -49,4 +49,24 @@ export const DUMMY_POSTS = [
         text: "Nice lunch",
         timestamp: "4 hours ago",
     },
+    {
+        id: 3,
+        name: "Erfan Paya",
+        username: "erfanpaya",
+        userImage: ProfileIcon,
+        postImage:
+            "https://images.unsplash.com/photo-1657299156185-6f5de6da0996?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80",
+        text: "Nice lunch",
+        timestamp: "4 hours ago",
+    },
+    {
+        id: 4,
+        name: "Erfan Paya",
+        username: "erfanpaya",
+        userImage: ProfileIcon,
+        postImage:
+            "https://images.unsplash.com/photo-1657299156185-6f5de6da0996?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80",
+        text: "Nice lunch",
+        timestamp: "4 hours ago",
+    },
 ];

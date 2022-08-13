@@ -27,7 +27,7 @@ const Widgets = ({ news, users }) => {
             </div>
 
             {/* Users */}
-            <div className="w-[90%] xl:[75%] rounded-xl bg-gray-100 text-gray-700 space-y-3">
+            <div className="sticky top-16 w-[90%] xl:[75%] rounded-xl bg-gray-100 text-gray-700 space-y-3">
                 <h4 className="text-md  p-3 font-bold">Who to follow</h4>
                 {users.slice(0, usersCount).map((user) => (
                     <User key={user.login.uuid} user={user} />
