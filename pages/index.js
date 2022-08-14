@@ -1,4 +1,4 @@
-import Seo from "@/components/Head";
+import Seo from "@/components/Seo";
 
 import Sidebar from "@/components/Sidebar";
 import Feed from "@/components/Feed";

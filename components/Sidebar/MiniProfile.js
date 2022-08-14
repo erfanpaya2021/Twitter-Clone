@@ -10,7 +10,7 @@ const MiniProfile = ({ session, signOut }) => {
                 width={56}
                 height={56}
                 className="rounded-full xl:mr-2"
-                onClick={signOut}
+                onClick={() => signOut({ callbackUrl: "/auth/sign-in" })}
             />
             <div className="leading-5 hidden xl:inline">
                 <h4 className="font-bold ">{session?.user?.name}</h4>

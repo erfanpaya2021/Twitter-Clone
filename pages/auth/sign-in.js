@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 import { getProviders, signIn } from "next-auth/react";
 
-import Seo from "@/components/Head";
+import Seo from "@/components/Seo";
 
 import { IMAGES } from "@/constants/index";
 
