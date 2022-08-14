@@ -1,5 +1,7 @@
 import Image from "next/image";
 
+import Moment from "react-moment";
+
 import {
     ChartBarIcon,
     ChatIcon,
@@ -10,7 +12,7 @@ import {
 } from "@heroicons/react/outline";
 
 const Post = ({ post }) => {
-    const { id, name, username, userImage, postImage, text, timestamp } = post;
+    const { id, name, username, userImage, postImage, text, timestamp } = post.data();
 
     return (
         <article className="flex space-x-3 p-4 border-b border-gray-200">
@@ -31,7 +33,10 @@ const Post = ({ post }) => {
                     <div className="flex items-start flex-col sm:flex-row sm:items-end  space-x-1">
                         <h3 className=" font-bold hover:underline">{name}</h3>
                         <h4 className="text-sm text-gray-500">
-                            @{username} - <span className="hover:underline">{timestamp}</span>
+                            @{username} -{" "}
+                            <span className="hover:underline">
+                                <Moment fromNow>{timestamp.toDate()}</Moment>
+                            </span>
                         </h4>
                     </div>
                     <DotsHorizontalIcon className="hover-effect w-10 h-10 p-2 hover:text-sky-500 hover:bg-sky-100" />

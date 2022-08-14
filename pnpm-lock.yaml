@@ -10,11 +10,13 @@ specifiers:
   eslint: 8.21.0
   eslint-config-next: 12.2.4
   firebase: ^9.9.2
+  moment: ^2.29.4
   next: 12.2.4
   next-auth: ^4.10.3
   postcss: ^8.4.16
   react: 18.2.0
   react-dom: 18.2.0
+  react-moment: ^1.1.2
   tailwindcss: ^3.1.8
 
 dependencies:
@@ -23,10 +25,12 @@ dependencies:
   '@heroicons/react': 1.0.6_react@18.2.0
   emoji-mart: 5.2.1
   firebase: 9.9.2
+  moment: 2.29.4
   next: 12.2.4_biqbaboplfbrettd7655fr4n2y
   next-auth: 4.10.3_biqbaboplfbrettd7655fr4n2y
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
+  react-moment: 1.1.2_moment@2.29.4+react@18.2.0
 
 devDependencies:
   '@tailwindcss/forms': 0.5.2_tailwindcss@3.1.8
@@ -2179,6 +2183,10 @@ packages:
     resolution: {integrity: sha512-Jsjnk4bw3YJqYzbdyBiNsPWHPfO++UGG749Cxs6peCu5Xg4nrena6OVxOYxrQTqww0Jmwt+Ref8rggumkTLz9Q==}
     dev: true
 
+  /moment/2.29.4:
+    resolution: {integrity: sha512-5LC9SOxjSc2HF6vO2CyuTDNivEdoz2IvyJJGj6X8DJ0eFyfszE0QiEd+iXmBvUP3WHxSjFH/vIsA0EN00cgr8w==}
+    dev: false
+
   /ms/2.0.0:
     resolution: {integrity: sha512-Tpp60P6IUJDTuOq/5Z8cdskzJujfwqfOTkrwIwj7IRISpnkJnT6SyJ4PCPnGMoFjC9ddhal5KVIYtAt97ix05A==}
     dev: true
@@ -2668,6 +2676,17 @@ packages:
   /react-is/16.13.1:
     resolution: {integrity: sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==}
     dev: true
+
+  /react-moment/1.1.2_moment@2.29.4+react@18.2.0:
+    resolution: {integrity: sha512-lfb+shYXI2tXlQrNUpNr05/1D/kzFj8Isbfp89DQrpZk0fs2JIAnLHWETR0hQS9zvtzwLWlVv0wKLffbue5HoA==}
+    peerDependencies:
+      moment: ^2.29.0
+      prop-types: ^15.7.0
+      react: ^16.0 || ^17.0.0 || ^18.0.0
+    dependencies:
+      moment: 2.29.4
+      react: 18.2.0
+    dev: false
 
   /react/18.2.0:
     resolution: {integrity: sha512-/3IjMdb2L9QbBdWiW5e3P2/npwMBaU9mHCSCUzNln0ZCYbcfTsGbTJrU/kGemdH2IWmB2ioZ+zkxtmq6g09fGQ==}
