@@ -4,6 +4,9 @@ import { EmojiHappyIcon, PhotographIcon, XIcon } from "@heroicons/react/outline"
 
 import { useSession } from "next-auth/react";
 
+import data from "@emoji-mart/data";
+import Picker from "@emoji-mart/react";
+
 import {
     db,
     collection,
@@ -24,6 +27,7 @@ const Input = () => {
     const [input, setInput] = useState("");
     const [selectedFile, setSelectedFile] = useState(null);
     const [loading, setLoading] = useState(false);
+    const [emojiPicker, setEmojiPicker] = useState(false);
 
     const createPostHandler = async () => {
         if (loading) return;
@@ -62,6 +66,11 @@ const Input = () => {
         reader.onload = (readerEvent) => {
             setSelectedFile(readerEvent.target.result);
         };
+    };
+
+    const addEmojiToInput = (data) => {
+        setEmojiPicker(false);
+        setInput((prev) => prev + data.native);
     };
 
     return (
@@ -116,7 +125,20 @@ const Input = () => {
                                                 onChange={addImageToPostHandler}
                                             />
                                         </div>
-                                        <EmojiHappyIcon className="w-10 h-10 p-2 hover-effect hover:text-sky-500 hover:bg-sky-100 " />
+                                        <div className="relative">
+                                            <EmojiHappyIcon
+                                                onClick={() => setEmojiPicker((prev) => !prev)}
+                                                className="w-10 h-10 p-2 hover-effect hover:text-sky-500 hover:bg-sky-100 "
+                                            />
+                                            {emojiPicker && (
+                                                <div className="absolute z-40">
+                                                    <Picker
+                                                        data={data}
+                                                        onEmojiSelect={addEmojiToInput}
+                                                    />
+                                                </div>
+                                            )}
+                                        </div>
                                     </div>
                                     <button
                                         disabled={!input.trim()}
