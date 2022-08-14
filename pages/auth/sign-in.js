@@ -21,7 +21,7 @@ const SignIn = () => {
             <Seo title="Sign In" description={"Twitter clone sign in page"} />
             <main className="">
                 <div className="flex flex-col justify-center items-center h-screen">
-                    <Image src={IMAGES.TwitterLogo} alt="Twitter Logo" width="48" height="48" />
+                    <Image src={IMAGES.TwitterLogoLg} alt="Twitter Logo" width="144" height="144" />
                     <p className="text-center italic my-10">
                         This app is created for learning purposes
                     </p>

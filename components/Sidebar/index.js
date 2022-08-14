@@ -1,11 +1,15 @@
 import Image from "next/image";
 
+import { useSession, signIn, signOut } from "next-auth/react";
+
 import MenuItem from "./MenuItem";
 import MiniProfile from "./MiniProfile";
 
-import { IMAGES, MENU_ITEMS } from "@/constants/index";
+import { IMAGES, MENU_ITEMS, PRIVATE_MENU_ITEMS } from "@/constants/index";
 
 const Sidebar = () => {
+    const { data: session, status } = useSession();
+
     return (
         <aside className="hidden sm:flex flex-col p-2 xl:items-start h-full fixed xl:ml-24">
             {/* Twitter Logo */}
@@ -21,17 +25,39 @@ const Sidebar = () => {
                         title={menuItem.title}
                         Icon={menuItem.icon}
                         active={menuItem.active}
+                        private={menuItem.private}
+                        status={status}
                     />
                 ))}
+                {status === "authenticated" &&
+                    PRIVATE_MENU_ITEMS.map((menuItem) => (
+                        <MenuItem
+                            key={menuItem.title}
+                            title={menuItem.title}
+                            Icon={menuItem.icon}
+                            active={menuItem.active}
+                            private={menuItem.private}
+                            status={status}
+                        />
+                    ))}
             </ul>
 
             {/* Button */}
-            <button className="hidden xl:inline bg-blue-400 text-white text-md rounded-full w-56 h-12 font-bold shadow-md hover:brightness-95 mb-4">
-                Tweet
-            </button>
+            {status === "authenticated" ? (
+                <button className="hidden xl:inline bg-blue-400 text-white text-md rounded-full w-56 h-12 font-bold shadow-md hover:brightness-95 mb-4">
+                    Tweet
+                </button>
+            ) : (
+                <button
+                    onClick={signIn}
+                    className="hidden xl:inline bg-blue-400 text-white text-md rounded-full w-36 h-12 font-bold shadow-md hover:brightness-95 mb-4"
+                >
+                    Sign in
+                </button>
+            )}
 
             {/* Mini Profile */}
-            <MiniProfile image={IMAGES.ProfileIcon} title={"Erfan"} subtitle={"Paya"} />
+            {status === "authenticated" && <MiniProfile session={session} signOut={signOut} />}
         </aside>
     );
 };
