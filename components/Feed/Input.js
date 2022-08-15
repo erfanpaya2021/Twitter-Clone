@@ -118,7 +118,7 @@ const Input = () => {
                                             className=""
                                             onClick={() => filePickerRef.current.click()}
                                         >
-                                            <PhotographIcon className="w-10 h-10 p-2 hover-effect hover:text-sky-500 hover:bg-sky-100 " />
+                                            <PhotographIcon className="w-10 h-10 p-2 hover-effect text-sky-500 hover:text-sky-600 hover:bg-sky-100 " />
                                             <input
                                                 type="file"
                                                 hidden
@@ -129,7 +129,7 @@ const Input = () => {
                                         <div className="relative">
                                             <EmojiHappyIcon
                                                 onClick={() => setEmojiPicker((prev) => !prev)}
-                                                className="relative  w-10 h-10 p-2 hover-effect hover:text-sky-500 hover:bg-sky-100 "
+                                                className="relative  w-10 h-10 p-2 hover-effect text-sky-500 hover:text-sky-600 hover:bg-sky-100 "
                                             />
                                             {emojiPicker && (
                                                 <div className="absolute -left-20 z-[40] shadow-md">

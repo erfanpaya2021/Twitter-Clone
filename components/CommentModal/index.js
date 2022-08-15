@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 
 import { useSession } from "next-auth/react";
@@ -8,12 +9,14 @@ import { modalAtom, postIdAtom } from "@/atom/modal-atom";
 import ReactModal from "react-modal";
 import Moment from "react-moment";
 
-import { EmojiHappyIcon, PhotographIcon, XIcon } from "@heroicons/react/outline";
+import { EmojiHappyIcon, XIcon } from "@heroicons/react/outline";
+import data from "@emoji-mart/data";
+import Picker from "@emoji-mart/react";
 
-import { db, doc, onSnapshot } from "@/lib/firebase";
-import { Picker } from "emoji-mart";
+import { addDoc, collection, db, doc, onSnapshot, serverTimestamp } from "@/lib/firebase";
 
 const CommentModal = () => {
+    const router = useRouter();
     const { data: session, status } = useSession();
 
     const [isOpen, setIsOpen] = useRecoilState(modalAtom);
@@ -22,6 +25,20 @@ const CommentModal = () => {
     const [post, setPost] = useState({});
     const [input, setInput] = useState("");
     const [emojiPicker, setEmojiPicker] = useState(false);
+
+    const addCommentHandler = async () => {
+        await addDoc(collection(db, "posts", postId, "comments"), {
+            comment: input,
+            name: session?.user?.name,
+            username: session?.user?.username,
+            userImage: session?.user?.image,
+            timestamp: serverTimestamp(),
+        });
+
+        setIsOpen(false);
+        setInput("");
+        router.push(`/posts/${postId}`);
+    };
 
     useEffect(() => {
         const unsubscribe = onSnapshot(doc(db, "posts", postId), (snapshot) =>
@@ -100,7 +117,7 @@ const CommentModal = () => {
                                     <div className="relative">
                                         <EmojiHappyIcon
                                             onClick={() => setEmojiPicker((prev) => !prev)}
-                                            className="relative  w-10 h-10 p-2 hover-effect hover:text-sky-500 hover:bg-sky-100 "
+                                            className="relative  w-10 h-10 p-2 hover-effect text-sky-500 hover:text-sky-600 hover:bg-sky-100 "
                                         />
                                         {emojiPicker && (
                                             <div className="absolute -left-20 z-[40] shadow-md">
@@ -117,6 +134,7 @@ const CommentModal = () => {
                                 </div>
                                 <button
                                     disabled={!input.trim()}
+                                    onClick={addCommentHandler}
                                     className="px-4 py-1.5 rounded-full font-bold shadow-md bg-blue-500 text-white hover:brightness-95 disabled:opacity-50 disabled:cursor-not-allowed"
                                 >
                                     Reply

@@ -38,6 +38,7 @@ const Post = ({ post }) => {
     const [postId, setPostId] = useRecoilState(postIdAtom);
 
     const [likes, setLikes] = useState([]);
+    const [comments, setComments] = useState([]);
     const [hasLiked, setHasLiked] = useState(false);
 
     const likePostHandler = async () => {
@@ -75,6 +76,12 @@ const Post = ({ post }) => {
     useEffect(() => {
         const unsubscribe = onSnapshot(collection(db, "posts", post.id, "likes"), (snapshot) =>
             setLikes(snapshot.docs),
+        );
+    }, [post.id]);
+
+    useEffect(() => {
+        const unsubscribe = onSnapshot(collection(db, "posts", post.id, "comments"), (snapshot) =>
+            setComments(snapshot.docs),
         );
     }, [post.id]);
 
@@ -126,10 +133,17 @@ const Post = ({ post }) => {
 
                 {/* Post Footer */}
                 <div className="flex items-center justify-between pt-3">
-                    <ChatIcon
-                        onClick={openModalHandler}
-                        className="hover-effect w-10 h-10 p-2 text-gray-500 hover:text-sky-500 hover:bg-sky-100"
-                    />
+                    <div className="flex items-center">
+                        <ChatIcon
+                            onClick={openModalHandler}
+                            className="hover-effect w-10 h-10 p-2 text-gray-500 hover:text-sky-500 hover:bg-sky-100"
+                        />
+                        {comments.length > 0 && (
+                            <span className={`text-sm font-bold text-gray-500 select-none`}>
+                                {comments.length}
+                            </span>
+                        )}
+                    </div>
                     {session?.user?.uid === id && (
                         <TrashIcon
                             onClick={deletePostHandler}
