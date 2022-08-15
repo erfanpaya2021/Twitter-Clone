@@ -94,6 +94,7 @@ const Input = () => {
                                 placeholder="What's happening?"
                                 value={input}
                                 onChange={(e) => setInput(e.target.value)}
+                                disabled={loading}
                             ></textarea>
                         </div>
                         {selectedFile && (

@@ -44,13 +44,13 @@ const Sidebar = () => {
 
             {/* Button */}
             {status === "authenticated" ? (
-                <button className="hidden xl:inline bg-blue-400 text-white text-md rounded-full w-56 h-12 font-bold shadow-md hover:brightness-95 mb-4">
+                <button className="hidden xl:inline bg-blue-400 text-white text-base rounded-full w-56 h-12 font-bold shadow-md hover:brightness-95 mb-4">
                     Tweet
                 </button>
             ) : (
                 <button
                     onClick={signIn}
-                    className="hidden xl:inline bg-blue-400 text-white text-md rounded-full w-36 h-12 font-bold shadow-md hover:brightness-95 mb-4"
+                    className="hidden xl:inline bg-blue-400 text-white text-base rounded-full w-36 h-12 font-bold shadow-md hover:brightness-95 mb-4"
                 >
                     Sign in
                 </button>
