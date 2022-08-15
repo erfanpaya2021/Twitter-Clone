@@ -16,9 +16,9 @@ const User = ({ user }) => {
                 <h6 className="text-[15px]   font-medium hover:underline cursor-pointer">
                     {name.first} {name.last}
                 </h6>
-                <span className="text-[15px]   text-gray-500 ">{login.username}</span>
+                <span className="text-[15px] text-gray-500 ">{login.username}</span>
             </div>
-            <button className="block h-9 text-[15px]   leading-3 px-4 py-2 rounded-full font-bold shadow-md bg-blue-500 text-white hover:brightness-95">
+            <button className="block h-9 text-[15px] leading-3 px-4 py-2 rounded-full font-bold shadow-md bg-blue-500 text-white hover:brightness-95">
                 Follow
             </button>
         </div>

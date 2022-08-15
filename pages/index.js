@@ -3,6 +3,7 @@ import Seo from "@/components/Seo";
 import Sidebar from "@/components/Sidebar";
 import Feed from "@/components/Feed";
 import Widgets from "@/components/Widgets";
+import CommentModal from "@/components/CommentModal";
 
 export default function Home({ news, users }) {
     return (
@@ -23,6 +24,7 @@ export default function Home({ news, users }) {
                 <Widgets news={news?.articles} users={users.results} />
 
                 {/* Modal */}
+                <CommentModal />
             </main>
         </>
     );

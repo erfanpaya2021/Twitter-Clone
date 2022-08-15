@@ -7,7 +7,8 @@
             "@/public/*": ["public/*"],
             "@/styles/*": ["styles/*"],
             "@/constants/*": ["constants/*"],
-            "@/lib/*": ["lib/*"]
+            "@/lib/*": ["lib/*"],
+            "@/atom/*": ["atom/*"]
         }
     }
 }
