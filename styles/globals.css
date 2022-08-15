@@ -59,7 +59,7 @@ ul {
 
 @layer components {
     .hover-effect {
-        @apply cursor-pointer rounded-full w-[3rem]  h-[3rem] ;
+        @apply cursor-pointer rounded-full w-[3rem]  h-[3rem] transition duration-500 ease-out;
         @apply xl:w-full xl:h-auto p-2;
         @apply hover:bg-gray-200;
     }

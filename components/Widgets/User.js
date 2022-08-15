@@ -4,7 +4,7 @@ const User = ({ user }) => {
     const { name, login, picture } = user;
 
     return (
-        <div className="flex items-center hover:bg-gray-200 p-3 transition-colors duration-200 ">
+        <div className="flex items-center hover:bg-gray-200 p-3 transition duration-500 ease-out">
             <img
                 src={picture.thumbnail}
                 width="48"

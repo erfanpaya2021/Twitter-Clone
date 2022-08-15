@@ -1,13 +1,12 @@
 import { useEffect, useState } from "react";
 
-import { onSnapshot, query, collection, db, orderBy } from "@/lib/firebase";
+import { onSnapshot, query, collection, db } from "@/lib/firebase";
+
+import { AnimatePresence, motion } from "framer-motion";
 
 import Header from "./Header";
 import Input from "./Input";
 import Post from "./Post";
-
-import { DUMMY_POSTS } from "@/constants/index";
-import {} from "firebase/firestore";
 
 const Feed = () => {
     const [posts, setPosts] = useState([]);
@@ -28,9 +27,19 @@ const Feed = () => {
 
             {/* Posts */}
             <ul>
-                {posts.map((post) => (
-                    <Post key={post.id} post={post} />
-                ))}
+                <AnimatePresence>
+                    {posts.map((post) => (
+                        <motion.li
+                            key={post.id}
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            exit={{ opacity: 0 }}
+                            transition={{ duration: 1 }}
+                        >
+                            <Post post={post} />
+                        </motion.li>
+                    ))}
+                </AnimatePresence>
             </ul>
         </section>
     );
