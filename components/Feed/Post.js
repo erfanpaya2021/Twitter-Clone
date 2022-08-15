@@ -37,10 +37,8 @@ const Post = ({ post }) => {
     const likePostHandler = async () => {
         if (status === "authenticated") {
             if (hasLiked) {
-                console.log("like");
                 await deleteDoc(doc(db, "posts", post.id, "likes", session?.user?.uid));
             } else {
-                console.log("dislike");
                 await setDoc(doc(db, "posts", post.id, "likes", session?.user?.uid), {
                     username: session.user.username,
                 });
@@ -53,7 +51,9 @@ const Post = ({ post }) => {
     const deletePostHandler = async () => {
         if (window.confirm("Are you sure you want to delete this post?")) {
             await deleteDoc(doc(db, "posts", post.id));
-            await deleteObject(ref(storage, `posts/${post.id}/image`));
+            if (postImage) {
+                await deleteObject(ref(storage, `posts/${post.id}/image`));
+            }
         }
     };
 
