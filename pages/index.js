@@ -13,7 +13,7 @@ export default function Home({ news, users }) {
                 description={"Fantastic Twitter clone with next js and firebase "}
             />
 
-            <main className="flex min-h-screen max-w-7xl mx-auto">
+            <main className="flex min-h-screen max-w-screen-2xl mx-auto">
                 {/* Sidebar */}
                 <Sidebar />
 

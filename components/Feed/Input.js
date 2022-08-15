@@ -129,10 +129,10 @@ const Input = () => {
                                         <div className="relative">
                                             <EmojiHappyIcon
                                                 onClick={() => setEmojiPicker((prev) => !prev)}
-                                                className="relative z-[41] w-10 h-10 p-2 hover-effect hover:text-sky-500 hover:bg-sky-100 "
+                                                className="relative  w-10 h-10 p-2 hover-effect hover:text-sky-500 hover:bg-sky-100 "
                                             />
                                             {emojiPicker && (
-                                                <div className="absolute z-40 shadow-md">
+                                                <div className="absolute -left-20 z-[40] shadow-md">
                                                     <Picker
                                                         data={data}
                                                         onEmojiSelect={addEmojiToInput}

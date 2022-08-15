@@ -4,7 +4,7 @@ import Image from "next/image";
 import { signIn, useSession } from "next-auth/react";
 
 import { useRecoilState } from "recoil";
-import { modalAtom } from "@/atom/modal-atom";
+import { modalAtom, postIdAtom } from "@/atom/modal-atom";
 
 import Moment from "react-moment";
 
@@ -35,6 +35,8 @@ const Post = ({ post }) => {
     const { id, name, username, userImage, postImage, text, timestamp } = post.data();
 
     const [isOpen, setIsOpen] = useRecoilState(modalAtom);
+    const [postId, setPostId] = useRecoilState(postIdAtom);
+
     const [likes, setLikes] = useState([]);
     const [hasLiked, setHasLiked] = useState(false);
 
@@ -58,6 +60,15 @@ const Post = ({ post }) => {
             if (postImage) {
                 await deleteObject(ref(storage, `posts/${post.id}/image`));
             }
+        }
+    };
+
+    const openModalHandler = () => {
+        if (status === "authenticated") {
+            setPostId(post.id);
+            setIsOpen((prev) => !prev);
+        } else {
+            signIn();
         }
     };
 
@@ -116,7 +127,7 @@ const Post = ({ post }) => {
                 {/* Post Footer */}
                 <div className="flex items-center justify-between pt-3">
                     <ChatIcon
-                        onClick={() => setIsOpen((prev) => !prev)}
+                        onClick={openModalHandler}
                         className="hover-effect w-10 h-10 p-2 text-gray-500 hover:text-sky-500 hover:bg-sky-100"
                     />
                     {session?.user?.uid === id && (

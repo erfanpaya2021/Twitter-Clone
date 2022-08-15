@@ -10,7 +10,7 @@ const Widgets = ({ news, users }) => {
     const [usersCount, setUsersCount] = useState(3);
 
     return (
-        <aside className="hidden lg:block xl:w-[400px] ml-8 py-4 space-y-6">
+        <aside className="hidden lg:block xl:w-[420px] ml-8 py-4 space-y-6">
             {/* Search */}
             <SearchBar />
 
