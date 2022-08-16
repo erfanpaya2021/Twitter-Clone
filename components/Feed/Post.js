@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useRouter } from "next/router";
 import Image from "next/image";
 
 import { signIn, useSession } from "next-auth/react";
@@ -32,7 +33,8 @@ import {
 
 const Post = ({ post }) => {
     const { data: session, status } = useSession();
-    const { id, name, username, userImage, postImage, text, timestamp } = post.data();
+    const router = useRouter();
+    // const { id, name, username, userImage, postImage, text, timestamp } = post?.data();
 
     const [isOpen, setIsOpen] = useRecoilState(modalAtom);
     const [postId, setPostId] = useRecoilState(postIdAtom);
@@ -58,9 +60,10 @@ const Post = ({ post }) => {
     const deletePostHandler = async () => {
         if (window.confirm("Are you sure you want to delete this post?")) {
             await deleteDoc(doc(db, "posts", post.id));
-            if (postImage) {
+            if (post?.data()?.postImage) {
                 await deleteObject(ref(storage, `posts/${post.id}/image`));
             }
+            router.push("/");
         }
     };
 
@@ -93,24 +96,26 @@ const Post = ({ post }) => {
         <article className="flex space-x-3 p-4 border-b border-gray-200">
             {/* Left side | Image */}
             <div>
-                <Image
-                    src={userImage}
-                    alt="User Image"
-                    width="48"
-                    height="48"
-                    className="rounded-full cursor-pointer hover:brightness-95"
-                />
+                {post?.data()?.userImage && (
+                    <Image
+                        src={post?.data()?.userImage}
+                        alt="User Image"
+                        width="48"
+                        height="48"
+                        className="rounded-full cursor-pointer hover:brightness-95"
+                    />
+                )}
             </div>
             {/* Right side */}
             <div className="w-full ml-4">
                 {/* Post Header */}
                 <div className="flex items-center justify-between w-full p-2">
                     <div className="flex items-start flex-col sm:flex-row sm:items-end  space-x-1">
-                        <h3 className=" font-bold hover:underline">{name}</h3>
+                        <h3 className=" font-bold hover:underline">{post?.data()?.name}</h3>
                         <h4 className="text-sm text-gray-500">
-                            @{username} -
+                            @{post?.data()?.username} -
                             <span className="hover:underline">
-                                <Moment fromNow>{timestamp?.toDate()}</Moment>
+                                <Moment fromNow>{post?.data()?.timestamp?.toDate()}</Moment>
                             </span>
                         </h4>
                     </div>
@@ -118,10 +123,10 @@ const Post = ({ post }) => {
                 </div>
                 {/* Post Body */}
                 <div>
-                    <p className="text-gray-800 text-sm mb-2">{text}</p>
-                    {postImage && (
+                    <p className="text-gray-800 text-sm mb-2">{post?.data()?.text}</p>
+                    {post?.data()?.postImage && (
                         <Image
-                            src={postImage}
+                            src={post?.data()?.postImage}
                             alt="PostImage"
                             width="400"
                             height="300"
@@ -144,7 +149,7 @@ const Post = ({ post }) => {
                             </span>
                         )}
                     </div>
-                    {session?.user?.uid === id && (
+                    {session?.user?.uid === post?.data()?.id && (
                         <TrashIcon
                             onClick={deletePostHandler}
                             className="hover-effect w-10 h-10 p-2 text-gray-500 hover:text-red-500 hover:bg-red-100"

@@ -101,12 +101,17 @@ const Input = () => {
                             <div className="relative">
                                 <XIcon
                                     onClick={() => setSelectedFile(null)}
-                                    className="absolute top-2 left-2 w-8 h-8 p-1 text-black bg-white/50 rounded-full cursor-pointer hover:brightness-95 hover:text-red-500 hover:bg-red-200"
+                                    className="absolute z-10 top-2 left-2 w-8 h-8 p-1 text-black bg-white/50 rounded-full cursor-pointer hover:brightness-95 hover:text-red-500 hover:bg-red-200"
                                 />
-                                <img
-                                    className={`${loading && "animate-pulse"} object-cover`}
+                                <Image
+                                    className={`${
+                                        loading && "animate-pulse"
+                                    } object-cover rounded-3xl`}
                                     src={selectedFile}
                                     alt="selected file"
+                                    width="400"
+                                    height="300"
+                                    layout="responsive"
                                 />
                             </div>
                         )}

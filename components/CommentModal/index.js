@@ -22,11 +22,13 @@ const CommentModal = () => {
     const [isOpen, setIsOpen] = useRecoilState(modalAtom);
     const [postId, setPostId] = useRecoilState(postIdAtom);
 
+    const [isLoading, setIsLoading] = useState(false);
     const [post, setPost] = useState({});
     const [input, setInput] = useState("");
     const [emojiPicker, setEmojiPicker] = useState(false);
 
     const addCommentHandler = async () => {
+        setIsLoading(true);
         await addDoc(collection(db, "posts", postId, "comments"), {
             comment: input,
             name: session?.user?.name,
@@ -37,6 +39,7 @@ const CommentModal = () => {
 
         setIsOpen(false);
         setInput("");
+        setIsLoading(false);
         router.push(`/posts/${postId}`);
     };
 
@@ -45,6 +48,10 @@ const CommentModal = () => {
             setPost(snapshot.data()),
         );
     }, [postId]);
+
+    useEffect(() => {
+        ReactModal.setAppElement("body");
+    }, []);
 
     return (
         <>
@@ -69,13 +76,15 @@ const CommentModal = () => {
 
                 <div className="flex items-center p-2 space-x-4  relative">
                     <span className="w-0.5 h-full absolute z-[-1] left-8 top-11 bg-gray-200" />
-                    <Image
-                        src={post?.userImage}
-                        alt="User Image"
-                        width="48"
-                        height="48"
-                        className="rounded-full cursor-pointer hover:brightness-95"
-                    />
+                    {post?.userImage && (
+                        <Image
+                            src={post?.userImage}
+                            alt="User Image"
+                            width="48"
+                            height="48"
+                            className="rounded-full cursor-pointer hover:brightness-95"
+                        />
+                    )}
 
                     <div className="flex items-start flex-col space-x-1">
                         <div className="flex flex-col sm:flex-row">
@@ -133,7 +142,7 @@ const CommentModal = () => {
                                     </div>
                                 </div>
                                 <button
-                                    disabled={!input.trim()}
+                                    disabled={!input.trim() || isLoading}
                                     onClick={addCommentHandler}
                                     className="px-4 py-1.5 rounded-full font-bold shadow-md bg-blue-500 text-white hover:brightness-95 disabled:opacity-50 disabled:cursor-not-allowed"
                                 >

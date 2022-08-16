@@ -20,7 +20,7 @@ const Feed = () => {
     return (
         <section className="sm:ml-[74px] sm:flex-grow xl:ml-[370px] xl:min-w-[576px] border-l border-r border-gray-200 w-full max-w-xl">
             {/* Header */}
-            <Header />
+            <Header title="Home" />
 
             {/* Input */}
             <Input />
