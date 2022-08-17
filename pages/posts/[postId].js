@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 
 import { collection, db, doc, onSnapshot } from "@/lib/firebase";
 
+import { ArrowLeftIcon } from "@heroicons/react/outline";
 import { AnimatePresence, motion } from "framer-motion";
 
 import Seo from "@/components/Seo";
@@ -30,6 +31,16 @@ const PostPage = ({ news, users }) => {
         );
     }, [id]);
 
+    const headerContent = (
+        <div className="flex items-center space-x-1">
+            <ArrowLeftIcon
+                onClick={() => router.push("/")}
+                className="h-10 rounded-full p-2 cursor-pointer hover:bg-gray-200 dark:text-slate-300 dark:hover:bg-slate-700"
+            />
+            <span>Tweet</span>
+        </div>
+    );
+
     return (
         <>
             <Seo title="Tweet" description="awesome tweet" />
@@ -40,7 +51,7 @@ const PostPage = ({ news, users }) => {
 
                 {/* Feed */}
                 <section className="sm:ml-[74px] sm:flex-grow xl:ml-[370px] xl:min-w-[576px] border-l border-r border-gray-200 w-full max-w-xl">
-                    <Header title="Tweet" />
+                    <Header title={headerContent} />
 
                     <AnimatePresence>
                         {post !== null && (
