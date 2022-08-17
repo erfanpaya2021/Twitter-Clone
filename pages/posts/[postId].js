@@ -56,10 +56,20 @@ const PostPage = ({ news, users }) => {
                         )}
                     </AnimatePresence>
 
-                    {comments.length > 0 &&
-                        comments.map((comment, index) => (
-                            <Comment key={index} originalPostId={id} comment={comment} />
-                        ))}
+                    <AnimatePresence>
+                        {comments.length > 0 &&
+                            comments.map((comment) => (
+                                <motion.div
+                                    key={comment.id}
+                                    initial={{ opacity: 0 }}
+                                    animate={{ opacity: 1 }}
+                                    exit={{ opacity: 0 }}
+                                    transition={{ duration: 1 }}
+                                >
+                                    <Comment originalPostId={id} comment={comment} />
+                                </motion.div>
+                            ))}
+                    </AnimatePresence>
                 </section>
 
                 {/* Widgets */}
