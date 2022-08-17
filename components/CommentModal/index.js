@@ -46,6 +46,11 @@ const CommentModal = () => {
         router.push(`/posts/${postId}`);
     };
 
+    const addEmojiToInput = (data) => {
+        setEmojiPicker(false);
+        setInput((prev) => prev + data.native);
+    };
+
     useEffect(() => {
         const unsubscribe = onSnapshot(doc(db, "posts", postId), (snapshot) =>
             setPost(snapshot.data()),
