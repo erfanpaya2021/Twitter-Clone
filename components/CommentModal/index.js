@@ -31,6 +31,7 @@ const CommentModal = () => {
         setIsLoading(true);
         await addDoc(collection(db, "posts", postId, "comments"), {
             comment: input,
+            uid: session?.user?.uid,
             name: session?.user?.name,
             username: session?.user?.username,
             userImage: session?.user?.image,
