@@ -93,7 +93,7 @@ const Post = ({ post }) => {
     }, [session?.user?.uid, likes]);
 
     return (
-        <article className="flex space-x-3 p-4 border-b border-gray-200">
+        <article className="flex space-x-3 p-4 border-b border-gray-200 dark:border-slate-500">
             {/* Left side | Image */}
             <div>
                 {post?.data()?.userImage && (
@@ -111,8 +111,8 @@ const Post = ({ post }) => {
                 {/* Post Header */}
                 <div className="flex items-center justify-between w-full p-2">
                     <div className="flex items-start flex-col sm:flex-row sm:items-end  space-x-1">
-                        <h3 className=" font-bold hover:underline">{post?.data()?.name}</h3>
-                        <h4 className="text-sm text-gray-500">
+                        <h3 className=" font-bold hover:underline ">{post?.data()?.name}</h3>
+                        <h4 className="text-sm text-gray-500 dark:text-gray-400">
                             @{post?.data()?.username} -
                             <span className="hover:underline">
                                 <Moment fromNow>{post?.data()?.timestamp?.toDate()}</Moment>
@@ -123,7 +123,9 @@ const Post = ({ post }) => {
                 </div>
                 {/* Post Body */}
                 <div onClick={() => router.push(`/posts/${post.id}`)}>
-                    <p className="text-gray-800 text-sm mb-2">{post?.data()?.text}</p>
+                    <p className="text-gray-800 text-sm mb-2 dark:text-gray-400">
+                        {post?.data()?.text}
+                    </p>
                     {post?.data()?.postImage && (
                         <Image
                             src={post?.data()?.postImage}
@@ -141,7 +143,7 @@ const Post = ({ post }) => {
                     <div className="flex items-center">
                         <ChatIcon
                             onClick={openModalHandler}
-                            className="hover-effect w-10 h-10 p-2 text-gray-500 hover:text-sky-500 hover:bg-sky-100"
+                            className="hover-effect w-10 h-10 p-2 text-gray-500 hover:text-sky-500 hover:bg-sky-100 dark:hover:text-sky-500 dark:hover:bg-sky-700"
                         />
                         {comments.length > 0 && (
                             <span className={`text-sm font-bold text-gray-500 select-none`}>
@@ -152,25 +154,25 @@ const Post = ({ post }) => {
                     {session?.user?.uid === post?.data()?.id && (
                         <TrashIcon
                             onClick={deletePostHandler}
-                            className="hover-effect w-10 h-10 p-2 text-gray-500 hover:text-red-500 hover:bg-red-100"
+                            className="hover-effect w-10 h-10 p-2 text-gray-500 hover:text-red-500 hover:bg-red-100 dark:hover:bg-red-400 dark:hover:text-red-700"
                         />
                     )}
                     <div className="flex items-center">
                         {hasLiked ? (
                             <HeartIconSolid
                                 onClick={likePostHandler}
-                                className="hover-effect w-10 h-10 p-2 text-red-500 hover:bg-red-100"
+                                className="hover-effect w-10 h-10 p-2 text-red-500 hover:bg-red-100  dark:hover:bg-red-400 dark:hover:text-red-700"
                             />
                         ) : (
                             <HeartIcon
                                 onClick={likePostHandler}
-                                className="hover-effect w-10 h-10 p-2 text-gray-500 hover:text-red-500 hover:bg-red-100"
+                                className="hover-effect w-10 h-10 p-2 text-gray-500 hover:text-red-500 hover:bg-red-100 dark:hover:bg-red-400 dark:hover:text-red-700"
                             />
                         )}
                         {likes.length > 0 && (
                             <span
                                 className={`text-sm font-bold text-gray-500 select-none ${
-                                    hasLiked && "text-red-500"
+                                    hasLiked && "text-red-500 dark:text-red-700"
                                 }`}
                             >
                                 {likes.length}
@@ -178,8 +180,8 @@ const Post = ({ post }) => {
                         )}
                     </div>
 
-                    <ShareIcon className="hover-effect w-10 h-10 p-2 text-gray-500 hover:text-sky-500 hover:bg-sky-100" />
-                    <ChartBarIcon className="hover-effect w-10 h-10 p-2 text-gray-500 hover:text-sky-500 hover:bg-sky-100" />
+                    <ShareIcon className="hover-effect w-10 h-10 p-2 text-gray-500 hover:text-sky-500 hover:bg-sky-100 dark:hover:text-sky-500 dark:hover:bg-sky-700" />
+                    <ChartBarIcon className="hover-effect w-10 h-10 p-2 text-gray-500 hover:text-sky-500 hover:bg-sky-100 dark:hover:text-sky-500 dark:hover:bg-sky-700" />
                 </div>
             </div>
         </article>

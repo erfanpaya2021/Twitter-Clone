@@ -18,7 +18,7 @@ export const IMAGES = {
 };
 
 export const MENU_ITEMS = [
-    { title: "Home", icon: HomeIcon, active: true },
+    { title: "Home", icon: HomeIcon, active: true, path: "/" },
     { title: "Explore", icon: HashtagIcon, active: false },
 ];
 

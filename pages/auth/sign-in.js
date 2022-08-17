@@ -19,7 +19,7 @@ const SignIn = () => {
     return (
         <>
             <Seo title="Sign In" description={"Twitter clone sign in page"} />
-            <main className="">
+            <main className="dark:bg-slate-900">
                 <div className="flex flex-col justify-center items-center h-screen">
                     <Image src={IMAGES.TwitterLogoLg} alt="Twitter Logo" width="144" height="144" />
                     <p className="text-center italic my-10">

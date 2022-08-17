@@ -1,3 +1,4 @@
+import { useRouter } from "next/router";
 import Image from "next/image";
 
 import { useSession, signIn, signOut } from "next-auth/react";
@@ -8,13 +9,19 @@ import MiniProfile from "./MiniProfile";
 import { IMAGES, MENU_ITEMS, PRIVATE_MENU_ITEMS } from "@/constants/index";
 
 const Sidebar = () => {
+    const router = useRouter();
     const { data: session, status } = useSession();
 
     return (
         <aside className="hidden sm:flex flex-col p-2 xl:items-start h-full fixed xl:ml-24">
             {/* Twitter Logo */}
-            <div className="hover-effect w-12 h-12 p-1 hover:bg-blue-100">
-                <Image src={IMAGES.TwitterLogo} alt="Twitter Logo" className="w-12 h-12" />
+            <div className="hover-effect w-12 h-12 p-1 hover:bg-blue-100 dark:hover:bg-slate-700">
+                <Image
+                    onClick={() => router.push("/")}
+                    src={IMAGES.TwitterLogo}
+                    alt="Twitter Logo"
+                    className="w-12 h-12"
+                />
             </div>
 
             {/* Menu */}
@@ -27,6 +34,7 @@ const Sidebar = () => {
                         active={menuItem.active}
                         private={menuItem.private}
                         status={status}
+                        path={menuItem.path}
                     />
                 ))}
                 {status === "authenticated" &&

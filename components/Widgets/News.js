@@ -5,7 +5,7 @@ const News = ({ article }) => {
 
     return (
         <a className="" href={url} target="_blank" rel="noreferrer">
-            <article className="flex space-between hover:bg-gray-200 p-3 transition duration-500 ease-out">
+            <article className="flex space-between hover:bg-gray-200 p-3 transition duration-500 ease-out dark:hover:bg-slate-800">
                 <div className="w-[60%] space-y-2">
                     <h6 className="text-sm font-medium">{title.substr(0, 50)}...</h6>
                     <span className="text-gray-500 text-sm">{source.name}</span>

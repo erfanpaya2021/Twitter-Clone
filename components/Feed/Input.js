@@ -76,7 +76,7 @@ const Input = () => {
     return (
         <>
             {status === "authenticated" && (
-                <div className="flex space-x-3 p-4 border-b border-gray-200">
+                <div className="flex space-x-3 p-4 border-b border-gray-200 dark:border-slate-500">
                     <div>
                         <Image
                             src={session.user?.image}
@@ -86,10 +86,10 @@ const Input = () => {
                             className="rounded-full cursor-pointer hover:brightness-95"
                         />
                     </div>
-                    <div className="w-full divide-y divide-gray-200">
+                    <div className="w-full divide-y divide-gray-200 dark:divide-slate-500">
                         <div>
                             <textarea
-                                className="w-full border-none tracking-wide min-h-[56px] text-gray-700 focus:ring-0 placeholder:text-gray-500 "
+                                className="w-full border-none tracking-wide min-h-[56px] text-white focus:ring-0 placeholder:text-gray-500 dark:bg-slate-700 dark:text-slate-300 dark:placeholder:text-slate-300"
                                 rows="2"
                                 placeholder="What's happening?"
                                 value={input}
@@ -123,7 +123,7 @@ const Input = () => {
                                             className=""
                                             onClick={() => filePickerRef.current.click()}
                                         >
-                                            <PhotographIcon className="w-10 h-10 p-2 hover-effect text-sky-500 hover:text-sky-600 hover:bg-sky-100 " />
+                                            <PhotographIcon className="w-10 h-10 p-2 hover-effect text-sky-500 hover:text-sky-600 hover:bg-sky-100 dark:text-sky-600 dark:hover:text-sky-500 dark:hover:bg-sky-700" />
                                             <input
                                                 type="file"
                                                 hidden
@@ -134,7 +134,7 @@ const Input = () => {
                                         <div className="relative">
                                             <EmojiHappyIcon
                                                 onClick={() => setEmojiPicker((prev) => !prev)}
-                                                className="relative  w-10 h-10 p-2 hover-effect text-sky-500 hover:text-sky-600 hover:bg-sky-100 "
+                                                className="relative  w-10 h-10 p-2 hover-effect text-sky-500 hover:text-sky-600 hover:bg-sky-100 dark:text-sky-600 dark:hover:text-sky-500 dark:hover:bg-sky-700"
                                             />
                                             {emojiPicker && (
                                                 <div className="absolute -left-20 z-[40] shadow-md">

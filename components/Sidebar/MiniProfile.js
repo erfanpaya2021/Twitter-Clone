@@ -3,7 +3,7 @@ import { DotsHorizontalIcon } from "@heroicons/react/solid";
 
 const MiniProfile = ({ session, signOut }) => {
     return (
-        <div className="hover-effect flex items-center justify-center xl:justify-between ">
+        <div className="hover-effect flex items-center justify-center xl:justify-between dark:hover:bg-slate-700">
             <Image
                 src={session?.user?.image}
                 alt={session?.user?.name}

@@ -126,7 +126,9 @@ const Comment = ({ comment, originalPostId }) => {
                 </div>
                 {/* Post Body */}
                 <div>
-                    <p className="text-gray-800 text-sm mb-2">{comment?.data()?.comment}</p>
+                    <p className="text-gray-800 text-sm mb-2 dark:text-gray-400">
+                        {comment?.data()?.comment}
+                    </p>
                 </div>
 
                 {/* Post Footer */}
@@ -134,25 +136,25 @@ const Comment = ({ comment, originalPostId }) => {
                     {session?.user?.uid === comment?.data()?.uid && (
                         <TrashIcon
                             onClick={deleteCommentHandler}
-                            className="hover-effect w-10 h-10 p-2 text-gray-500 hover:text-red-500 hover:bg-red-100"
+                            className="hover-effect w-10 h-10 p-2 text-gray-500 hover:text-red-500 hover:bg-red-100  dark:hover:bg-red-400 dark:hover:text-red-700"
                         />
                     )}
                     <div className="flex items-center">
                         {hasLiked ? (
                             <HeartIconSolid
                                 onClick={likeCommentHandler}
-                                className="hover-effect w-10 h-10 p-2 text-red-500 hover:bg-red-100"
+                                className="hover-effect w-10 h-10 p-2 text-red-500 hover:bg-red-100  dark:hover:bg-red-400 dark:hover:text-red-700"
                             />
                         ) : (
                             <HeartIcon
                                 onClick={likeCommentHandler}
-                                className="hover-effect w-10 h-10 p-2 text-gray-500 hover:text-red-500 hover:bg-red-100"
+                                className="hover-effect w-10 h-10 p-2 text-gray-500 hover:text-red-500 hover:bg-red-100  dark:hover:bg-red-400 dark:hover:text-red-700"
                             />
                         )}
                         {likes.length > 0 && (
                             <span
                                 className={`text-sm font-bold text-gray-500 select-none ${
-                                    hasLiked && "text-red-500"
+                                    hasLiked && "text-red-500 dark:text-red-700"
                                 }`}
                             >
                                 {likes.length}
@@ -160,8 +162,8 @@ const Comment = ({ comment, originalPostId }) => {
                         )}
                     </div>
 
-                    <ShareIcon className="hover-effect w-10 h-10 p-2 text-gray-500 hover:text-sky-500 hover:bg-sky-100" />
-                    <ChartBarIcon className="hover-effect w-10 h-10 p-2 text-gray-500 hover:text-sky-500 hover:bg-sky-100" />
+                    <ShareIcon className="hover-effect w-10 h-10 p-2 text-gray-500 hover:text-sky-500 hover:bg-sky-100 dark:hover:text-sky-500 dark:hover:bg-sky-700" />
+                    <ChartBarIcon className="hover-effect w-10 h-10 p-2 text-gray-500 hover:text-sky-500 hover:bg-sky-100 dark:hover:text-sky-500 dark:hover:bg-sky-700" />
                 </div>
             </div>
         </article>

@@ -3,6 +3,7 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 
 import { useSession } from "next-auth/react";
+import { useTheme } from "next-themes";
 import { useRecoilState } from "recoil";
 import { modalAtom, postIdAtom } from "@/atom/modal-atom";
 
@@ -18,6 +19,7 @@ import { addDoc, collection, db, doc, onSnapshot, serverTimestamp } from "@/lib/
 const CommentModal = () => {
     const router = useRouter();
     const { data: session, status } = useSession();
+    const { theme, setTheme } = useTheme();
 
     const [isOpen, setIsOpen] = useRecoilState(modalAtom);
     const [postId, setPostId] = useRecoilState(postIdAtom);
@@ -57,26 +59,28 @@ const CommentModal = () => {
     return (
         <>
             <ReactModal
-                className="z-[100] absolute top-24 left-[50%] translate-x-[-50%] max-w-lg w-[90%] h-80 bg-white border-2 border-gray-200 rounded-xl shadow-md focus:outline-none"
+                className="z-[100] absolute top-24 left-[50%] translate-x-[-50%] max-w-lg w-[90%] h-80 bg-white border-2 border-gray-200 rounded-xl shadow-md focus:outline-none dark:bg-slate-700 dark:border-slate-500"
                 isOpen={isOpen}
                 onRequestClose={() => setIsOpen(false)}
                 style={{
                     overlay: {
                         zIndex: 51,
+                        backgroundColor: "rgba(100 ,116 ,139, 0.8)",
                     },
                 }}
+                theme={theme}
             >
                 <div className="p-2">
-                    <div className="border-b border-gray-200 pb-2">
+                    <div className="border-b border-gray-200 pb-2 dark:border-slate-500">
                         <XIcon
                             onClick={() => setIsOpen(false)}
-                            className="hover-effect w-10 h-10 p-2"
+                            className="hover-effect w-10 h-10 p-2 dark:text-slate-300 dark:hover:bg-slate-500"
                         />
                     </div>
                 </div>
 
                 <div className="flex items-center p-2 space-x-4  relative">
-                    <span className="w-0.5 h-full absolute z-[-1] left-8 top-11 bg-gray-200" />
+                    <span className="w-0.5 h-full absolute z-[-1] left-8 top-11 bg-gray-200 dark:bg-slate-500" />
                     {post?.userImage && (
                         <Image
                             src={post?.userImage}
@@ -97,7 +101,7 @@ const CommentModal = () => {
                                 </span>
                             </h4>
                         </div>
-                        <p className="text-gray-600">{post?.text}</p>
+                        <p className="text-gray-600 dark:text-slate-300">{post?.text}</p>
                     </div>
                 </div>
 
@@ -113,10 +117,10 @@ const CommentModal = () => {
                         />
                     </div>
                     <div className="w-[90%] flex space-x-3 p-4">
-                        <div className="w-full divide-y divide-gray-200">
+                        <div className="w-full divide-y divide-gray-200 dark:divide-slate-500">
                             <div>
                                 <textarea
-                                    className="w-full border-none tracking-wide h-12 text-gray-700 focus:ring-0 placeholder:text-gray-500 resize-none"
+                                    className="w-full border-none tracking-wide h-12 text-gray-700 focus:ring-0 placeholder:text-gray-500 resize-none dark:bg-slate-600 dark:text-slate-300 dark:placeholder:text-slate-300"
                                     placeholder="Tweet your reply"
                                     value={input}
                                     onChange={(e) => setInput(e.target.value)}
@@ -127,7 +131,7 @@ const CommentModal = () => {
                                     <div className="relative">
                                         <EmojiHappyIcon
                                             onClick={() => setEmojiPicker((prev) => !prev)}
-                                            className="relative  w-10 h-10 p-2 hover-effect text-sky-500 hover:text-sky-600 hover:bg-sky-100 "
+                                            className="relative  w-10 h-10 p-2 hover-effect text-sky-500 hover:text-sky-600 hover:bg-sky-100 dark:text-sky-600 dark:hover:text-sky-500 dark:hover:bg-sky-700"
                                         />
                                         {emojiPicker && (
                                             <div className="absolute -left-20 z-[40] shadow-md">

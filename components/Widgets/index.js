@@ -15,7 +15,7 @@ const Widgets = ({ news, users }) => {
             <SearchBar />
 
             {/* News */}
-            <div className="w-[90%] xl:[75%] rounded-xl bg-gray-100 text-gray-700 space-y-3">
+            <div className="w-[90%] xl:[75%] rounded-xl bg-gray-100 text-gray-700 space-y-3 dark:bg-slate-700 dark:text-slate-300">
                 <h4 className="text-md  p-3 font-bold">What&apos;s Happening</h4>
                 <AnimatePresence>
                     {news.slice(0, articlesCount).map((article) => (
@@ -39,7 +39,7 @@ const Widgets = ({ news, users }) => {
             </div>
 
             {/* Users */}
-            <div className="sticky top-16 w-[90%] xl:[75%] rounded-xl bg-gray-100 text-gray-700 space-y-3">
+            <div className="sticky top-16 w-[90%] xl:[75%] rounded-xl bg-gray-100 text-gray-700 space-y-3 dark:bg-slate-700 dark:text-slate-300">
                 <h4 className="text-md  p-3 font-bold">Who to follow</h4>
                 <AnimatePresence>
                     {users.slice(0, usersCount).map((user) => (
