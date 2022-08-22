@@ -6,6 +6,8 @@ Install dependencies, run the development server:
 pnpm install
 pnpm run dev
 ```
+## Preview
+![Twitter Clone - Erfan Paya](https://i.ibb.co/KzG6kLK/twitter-clone.png)
 
 ## Demo
 
