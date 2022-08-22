@@ -9,10 +9,6 @@ pnpm run dev
 ## Preview
 ![Twitter Clone - Erfan Paya](https://i.ibb.co/KzG6kLK/twitter-clone.png)
 
-## Demo
-
-#### Here is a working live demo : https://sprightly-sherbet-e7ed51.netlify.app/
-
 ## Technologies
 
 -   [Next.js](https://nextjs.org/)
